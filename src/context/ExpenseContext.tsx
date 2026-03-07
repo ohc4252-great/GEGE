@@ -29,16 +29,19 @@ export const ExpenseProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   // Load Initial Data
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && saved !== 'undefined' && saved !== 'null') {
         const parsed: AppData = JSON.parse(saved);
-        setExpenses(parsed.expenses || []);
-        setEvaluations(parsed.evaluations || []);
-        setBudgetState(parsed.monthlyBudget || 0);
-      } catch (e) {
-        console.error('Failed to parse local storage data', e);
+        if (parsed && typeof parsed === 'object') {
+          setExpenses(Array.isArray(parsed.expenses) ? parsed.expenses : []);
+          setEvaluations(Array.isArray(parsed.evaluations) ? parsed.evaluations : []);
+          setBudgetState(typeof parsed.monthlyBudget === 'number' ? parsed.monthlyBudget : 0);
+        }
       }
+    } catch (e) {
+      console.error('Failed to parse local storage data', e);
+      localStorage.removeItem(STORAGE_KEY); // 파싱 실패 시 초기화
     }
   }, []);
 
@@ -55,7 +58,7 @@ export const ExpenseProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const addExpense = useCallback((expenseData: Omit<Expense, 'id'>) => {
     const newExpense: Expense = {
       ...expenseData,
-      id: crypto.randomUUID(),
+      id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 11),
     };
     setExpenses(prev => [...prev, newExpense]);
   }, []);
