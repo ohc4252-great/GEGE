@@ -13,7 +13,7 @@ const App: React.FC = () => {
         <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 mb-8">
           <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="bg-blue-500 p-2 rounded-2xl soft-shadow">
+              <div className="bg-blue-500 p-2 rounded-2xl shadow-lg shadow-gray-200/50">
                 <Sparkles className="text-white" size={24} />
               </div>
               <h1 className="text-2xl font-black tracking-tight text-gray-800">
@@ -44,7 +44,7 @@ const App: React.FC = () => {
 
         {/* Footer for Mobile context */}
         <footer className="mt-12 text-center text-gray-300 text-xs font-medium uppercase tracking-widest px-6">
-          &copy; 2024 Wise Spending Tracker. All rights reserved.
+          &copy; 2026 Wise Spending Tracker. All rights reserved.
         </footer>
       </div>
     </ExpenseProvider>

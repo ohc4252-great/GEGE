@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useExpenses } from '../context/ExpenseContext';
 import { X, CheckCircle2 } from 'lucide-react';
-import { Category, Expense } from '../types';
+import type { Category, Expense } from '../types';
 
 interface ExpenseModalProps {
   isOpen: boolean;
@@ -61,7 +61,7 @@ const ExpenseModal: React.FC<ExpenseModalProps> = ({ isOpen, onClose, initialDat
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
       
-      <div className="relative bg-white w-full max-w-md rounded-3xl soft-shadow overflow-hidden animate-in fade-in zoom-in duration-200">
+      <div className="relative bg-white w-full max-w-md rounded-3xl shadow-lg shadow-gray-200/50 overflow-hidden animate-in fade-in zoom-in duration-200">
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-black text-gray-800">
@@ -84,7 +84,7 @@ const ExpenseModal: React.FC<ExpenseModalProps> = ({ isOpen, onClose, initialDat
                     onClick={() => setFormData({ ...formData, category: cat })}
                     className={`py-2 px-1 text-[11px] font-bold rounded-xl transition-all border ${
                       formData.category === cat 
-                        ? 'bg-blue-500 text-white border-blue-500 soft-shadow' 
+                        ? 'bg-blue-500 text-white border-blue-500 shadow-lg shadow-gray-200/50' 
                         : 'bg-white text-gray-400 border-gray-100 hover:border-blue-200'
                     }`}
                   >
@@ -157,7 +157,7 @@ const ExpenseModal: React.FC<ExpenseModalProps> = ({ isOpen, onClose, initialDat
 
             <button
               type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-2xl soft-shadow transition-all flex items-center justify-center gap-2"
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-2xl shadow-lg shadow-gray-200/50 transition-all flex items-center justify-center gap-2"
             >
               <CheckCircle2 size={20} />
               {initialData ? '기록 수정하기' : '소비 기록 저장'}

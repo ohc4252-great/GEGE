@@ -4,7 +4,7 @@ import { format, parseISO } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { Plus, Trash2, Edit2, Check, X, MessageSquareQuote } from 'lucide-react';
 import ExpenseModal from './ExpenseModal';
-import { Expense } from '../types';
+import type { Expense } from '../types';
 
 const DailyPanel: React.FC = () => {
   const { expenses, evaluations, selectedDate, deleteExpense, setDailyEvaluation } = useExpenses();
@@ -33,7 +33,7 @@ const DailyPanel: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full glass-card p-6 min-w-[320px]">
+    <div className="flex flex-col h-full bg-white/80 backdrop-blur-md border border-white/20 shadow-lg shadow-gray-200/50 rounded-2xl p-6 min-w-[320px]">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h3 className="text-xl font-black text-gray-800">
@@ -43,7 +43,7 @@ const DailyPanel: React.FC = () => {
         </div>
         <button 
           onClick={() => handleOpenModal()}
-          className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-xl soft-shadow transition-all"
+          className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-xl shadow-lg shadow-gray-200/50 transition-all"
         >
           <Plus size={24} />
         </button>
@@ -86,7 +86,7 @@ const DailyPanel: React.FC = () => {
       <div className="flex-1 overflow-y-auto pr-2 space-y-4">
         {dayExpenses.length > 0 ? (
           dayExpenses.map(exp => (
-            <div key={exp.id} className="bg-white border border-gray-100 rounded-2xl p-4 soft-shadow-sm group">
+            <div key={exp.id} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-lg shadow-gray-200/50-sm group">
               <div className="flex justify-between items-start mb-2">
                 <div>
                   <span className="inline-block px-2 py-0.5 bg-gray-100 text-[10px] text-gray-500 rounded-md font-bold mb-1">

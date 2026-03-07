@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { Expense, DailyEvaluation, AppData } from '../types';
+import type { Expense, DailyEvaluation, AppData } from '../types';
 import { format } from 'date-fns';
 
 interface ExpenseContextType {

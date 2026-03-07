@@ -54,7 +54,7 @@ const Calendar: React.FC = () => {
   };
 
   return (
-    <div className="glass-card overflow-hidden">
+    <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg shadow-gray-200/50 rounded-2xl overflow-hidden">
       {/* Calendar Header */}
       <div className="flex items-center justify-between p-6 border-b border-gray-100">
         <h2 className="text-xl font-bold text-gray-800">

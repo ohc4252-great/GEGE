@@ -62,7 +62,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       {/* Budget Card */}
-      <div className="glass-card p-6 flex flex-col justify-between">
+      <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg shadow-gray-200/50 rounded-2xl p-6 flex flex-col justify-between">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Wallet className="text-blue-500" size={20} />
@@ -100,7 +100,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Score Gauge Card */}
-      <div className="glass-card p-6 flex flex-col justify-between">
+      <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg shadow-gray-200/50 rounded-2xl p-6 flex flex-col justify-between">
         <div className="flex items-center gap-2 mb-4">
           <ThermometerSun className="text-orange-500" size={20} />
           <h3 className="font-bold text-gray-700">소비 온도탑</h3>
@@ -122,7 +122,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Category Chart Card */}
-      <div className="glass-card p-6 flex flex-col">
+      <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg shadow-gray-200/50 rounded-2xl p-6 flex flex-col">
         <div className="flex items-center gap-2 mb-2">
           <PieIcon className="text-purple-500" size={20} />
           <h3 className="font-bold text-gray-700">카테고리 비율</h3>
@@ -146,7 +146,7 @@ const Dashboard: React.FC = () => {
                 </Pie>
                 <Tooltip 
                   contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
-                  formatter={(value: number) => `${value.toLocaleString()}원`}
+                  formatter={(value: any) => `${Number(value).toLocaleString()}원`}
                 />
               </PieChart>
             </ResponsiveContainer>
