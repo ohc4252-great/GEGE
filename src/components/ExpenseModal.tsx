@@ -58,11 +58,11 @@ const ExpenseModal: React.FC<ExpenseModalProps> = ({ isOpen, onClose, initialDat
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
       
-      <div className="relative bg-white w-full max-w-md rounded-3xl shadow-lg shadow-gray-200/50 overflow-hidden animate-in fade-in zoom-in duration-200">
-        <div className="p-6">
+      <div className="relative bg-white w-full max-w-md rounded-3xl shadow-2xl shadow-black/20 overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div className="p-6 max-h-[90vh] overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-black text-gray-800">
               {initialData ? '지출 내역 수정' : '소비 기록하기'}

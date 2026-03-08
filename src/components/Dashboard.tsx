@@ -127,31 +127,46 @@ const Dashboard: React.FC = () => {
           <PieIcon className="text-purple-500" size={20} />
           <h3 className="font-bold text-gray-700">카테고리 비율</h3>
         </div>
-        <div className="flex-1 h-[140px]">
+        <div className="flex-1 flex flex-col">
           {currentMonthStats.categoryData.length > 0 ? (
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={currentMonthStats.categoryData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={40}
-                  outerRadius={60}
-                  paddingAngle={5}
-                  dataKey="value"
-                >
-                  {currentMonthStats.categoryData.map((entry: any, index: number) => (
-                    <Cell key={`cell-${index}`} fill={CATEGORY_COLORS[entry.name] || '#cbd5e1'} />
-                  ))}
-                </Pie>
-                <Tooltip 
-                  contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
-                  formatter={(value: any) => `${Number(value).toLocaleString()}원`}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+            <>
+              <div className="h-[140px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={currentMonthStats.categoryData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={40}
+                      outerRadius={60}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {currentMonthStats.categoryData.map((entry: any, index: number) => (
+                        <Cell key={`cell-${index}`} fill={CATEGORY_COLORS[entry.name] || '#cbd5e1'} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                      formatter={(value: any) => `${Number(value).toLocaleString()}원`}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1">
+                {currentMonthStats.categoryData.map((entry: any) => (
+                  <div key={entry.name} className="flex items-center gap-1.5">
+                    <div 
+                      className="w-2.5 h-2.5 rounded-full" 
+                      style={{ backgroundColor: CATEGORY_COLORS[entry.name] || '#cbd5e1' }}
+                    />
+                    <span className="text-[11px] font-bold text-gray-500 truncate">{entry.name}</span>
+                  </div>
+                ))}
+              </div>
+            </>
           ) : (
-            <div className="h-full flex items-center justify-center text-gray-300 text-sm italic">기록된 지출이 없습니다.</div>
+            <div className="h-[140px] flex items-center justify-center text-gray-300 text-sm italic">기록된 지출이 없습니다.</div>
           )}
         </div>
       </div>
